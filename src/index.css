@@ -17,3 +17,7 @@ body {
   background: var(--Very-Light-Gray-Light-Mode-Background);
   color: var(--White-Dark-Mode-Text-Light-Mode-Elements);
 }
+
+input[type=text] {
+    padding-left: 3rem;
+}

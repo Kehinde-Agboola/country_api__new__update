@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
-// import Cards from "../../component/Card/Card";
+import Cards from "../../component/Card/Card";
 // import { Link } from "react-router-dom";
-// import Spiner from "../Spiner/Spiner";
+import Spiner from "../Spiner/Spiner";
 
 const Home = () => {
   const [country, setcountries] = useState([]);
@@ -53,7 +53,7 @@ const Home = () => {
   return (
     <div className="bg-gray-100 dark:bg-gray-800 dark:text-white">
       <div className="w-screen shadow-md py-6 md:px-10 px-3 bg-white dark:bg-gray-700 dark:text-white mb-16">
-        <div className=" max-w-full w-full flex mx-auto">
+        <div className=" max-w-full w-full flex mx-auto ">
           <h1 className="font-bold text-xl text-gray-700 dark:text-white">
             Where in the world
           </h1>
@@ -66,19 +66,21 @@ const Home = () => {
           </div>
         </div>
       </div>
-      <div className="max-w-full w-full flex mx-auto md:flex md:flex-cols py-6 md:px-10 px-3">
-        <div className="w-full">
-          <i className="fa fa-search rounded-md text-gray-400 "></i>
+      <div className="max-w-full w-full md:flex mx-auto md:flex md:flex-cols py-6 md:px-10 px-3">
+        <div className="w-full flex items-center">
+          <div className="absolute ml-4">
+            <i className="fa fa-search rounded-md text-gray-400"></i>
+          </div>
           <input
             type="text"
-            className="dark:bg-gray-700 dark:text-white outline-none p-4 shadow-md rounded-md w-full md:w-1/3 text-gray-700"
+            className="dark:bg-gray-700 dark:text-white outline-none p-4 shadow-md rounded-md w-full md:w-1/3 text-gray-700 -mr-10"
             onChange={(term) => searchCountry(term.target.value)}
             placeholder="search for a country..."
           />
         </div>
 
         <select
-          className="shadow-md rounded-md font-medium dark:bg-gray-700 outline-none dark:text-white text-gray-700 "
+          className="shadow-md rounded-md font-medium dark:bg-gray-700 outline-none dark:text-white text-gray-700 p-4 mt-4 w-full md:w-[15rem]"
           onChange={(val) => filterByRegion(val.target.value)}
         >
           <option value="">Filter by Religion</option>
@@ -90,23 +92,22 @@ const Home = () => {
         </select>
       </div>
 
-      {/* <div className="max-w-full py-6 md:px-10 px-3 grid sm:grid sm:grid-cols-2 md:grid md:grid-cols-3 xl:grid xl:grid-cols-4 gap-16 mx-auto items-center justify-center">
+      <div className="max-w-full py-6 md:px-10 px-3 grid sm:grid sm:grid-cols-2 md:grid md:grid-cols-3 xl:grid xl:grid-cols-4 gap-16 mx-auto items-center justify-center">
         {loading ? (
           <Spiner />
         ) : (
           country?.map((count, index) => (
-            <Link to={`/details/${name}`} key={index}>
-              <Cards
-                title={count.name.common}
-                image_url={count.flags}
-                population={count.population}
-                region={count.region}
-                capital={count.capital}
-              />
-            </Link>
+            <Cards
+              title={count.name.common}
+              image_url={count.flags}
+              population={count.population}
+              region={count.region}
+              capital={count.capital}
+              key={index}
+            />
           ))
         )}
-      </div> */}
+      </div>
     </div>
   );
 };
